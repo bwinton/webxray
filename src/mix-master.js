@@ -138,6 +138,17 @@
       setDialogPageMods: function(mods) {
         dialogPageMods = mods;
       },
+      getFocusedHTML: function() {
+        var focusedElement =  focused.getPrimaryElement();
+        if (!focusedElement)
+          return;
+        // We need to remove any script tags in the element now, or else
+        // we'll likely re-execute them.
+        $(focusedElement).find("script").remove();
+
+        var focusedHTML = $(focusedElement).absolutifyURLs().outerHtml();
+        return focusedHTML;
+      },
       replaceFocusedElementWithDialog: function(options) {
         var input = options.input;
         var dialogURL = options.dialogURL;
