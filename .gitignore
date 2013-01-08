@@ -4,3 +4,4 @@ src/settings.local.js
 static-files/mix-master-dialog
 /locale
 /src/locale/*.js
+vendor

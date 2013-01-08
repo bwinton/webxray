@@ -72,9 +72,13 @@
   
   function loadPrerequisites(cb) {
     var script = getMyScript();
-    
+
     if (jQuery.webxraySettings.baseURI.length == 0) {
-      var baseURI = script.attr("src").match(/(.*)webxray\.js$/)[1];
+      var baseURI;
+      if (script.length !== 0)
+        baseURI = script.attr("src").match(/(.*)webxray\.js$/)[1];
+      else
+        baseURI = "http://webxray.hackasaurus.org/";
       jQuery.webxraySettings.baseURI = baseURI;
     }
     
@@ -109,7 +113,10 @@
     });
     jQuery.when.apply(jQuery.when, pluginsToLoad).done(cb);
   }
-  
+
+  if (window.buildMetadata === undefined)
+    window.buildMetadata = {date: "now", commit: "none"};
+
   jQuery.extend({webxrayBuildMetadata: buildMetadata});
 
   $(window).ready(function() {
