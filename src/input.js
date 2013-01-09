@@ -53,7 +53,7 @@
           $(target).show();
         }
         return event;
-      }
+      };
     else
       return function(event) { return event; };
   })();
