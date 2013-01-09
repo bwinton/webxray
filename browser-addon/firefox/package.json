@@ -1,3 +1,7 @@
 {
-    "id": "jid1-OrDsAghzHAEKIg"
+    "id": "jid1-OrDsAghzHAEKIg",
+    "description": "An add-on to experiment with some different save-for-later flows.",
+    "fullName": "Save And Remix Prototype",
+    "license": "MPL 2.0",
+    "name": "remix"
 }

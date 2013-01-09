@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Remix Dialog</title>
+    <style>
+    a {
+      display: block;
+      -moz-appearance: button;
+      width: calc(100% - 12px);
+      text-align: center;
+      font-family: "helvetica neue",arial,helvetica,sans-serif;
+      font-size: 16px;
+      margin: 6px 0px;
+    }
+    </style>
+  </head>
+  <body>
+    <a id="save" href="#" onclick="addon.port.emit('save');">Save!</a>
+    <a id="remix" href="#" onclick="addon.port.emit('remix');">Remix!</a>
+    <a id="clear" href="#" onclick="addon.port.emit('clear');">Clear!</a>
+  </body>
+</html>

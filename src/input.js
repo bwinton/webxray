@@ -22,24 +22,6 @@
     return (!$(target).hasClass('webxray-base'));
   }
 
-  function redirect_by_post(purl, pparameters, in_new_tab) {
-    pparameters = (typeof pparameters == 'undefined') ? {} : pparameters;
-    in_new_tab = (typeof in_new_tab == 'undefined') ? true : in_new_tab;
-
-    var form = document.createElement("form");
-    $(form).attr("id", "reg-form").attr("name", "reg-form").attr("action", purl).attr("method", "post").attr("enctype", "multipart/form-data");
-    if (in_new_tab)
-      $(form).attr("target", "_blank");
-    $.each(pparameters, function(key) {
-      $('<input type="text"/>').attr({'name': key, 'value': this}).appendTo($(form));
-    });
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-
-    return false;
-  }
-
   // This function attempts to compensate for a browser's lack of support
   // for the 'pointer-events' CSS feature.
   var maybePassThroughEvent = (function() {
@@ -360,9 +342,8 @@
           key: 'R',
           cmd: 'remix',
           execute: function() {
-            redirect_by_post('http://robothaus.org:8080/render', {
-              'item1': mixMaster.getFocusedHTML(),
-            }, true);
+            window.save(mixMaster.getFocusedHTML());
+            if (onQuit) onQuit();
           }
         },
         {
